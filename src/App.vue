@@ -1,7 +1,7 @@
 <template>
 <div id="app">
     <test-one> </test-one>
-    <container>
+    <container h1="привет">
 
         <p>текст 1</p>
     </container>
@@ -30,5 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+* {
+    box-shadow:0 0 1px blue;
+}
 </style>

@@ -1,12 +1,14 @@
 <template lang="pug">
 div.container
-    h1.title заголовок контейнера {{ msg }} !!!
+    h1(v-if='h1').title {{h1}}
+
     slot
 
 </template>
 
 <script>
     export default {
+		props: ['h1'],
         data () {
             return {
                 msg : "shiro"
@@ -18,8 +20,12 @@ div.container
 </script>
 
 <style lang="scss">
-.container:hover{
-    box-shadow:0 0 1px red;
+
+.container {
+	max-width: 1020px;
+    margin: 0 auto;
+
 }
+
 
 </style>
