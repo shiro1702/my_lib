@@ -1,14 +1,11 @@
 <template lang="pug">
-div.container
-    h1(v-if='h1').title {{h1}}
-
-    slot
-
+div.v-col(v-bind:class = '"v-col_col-w_"+w')
+	slot
 </template>
 
 <script>
     export default {
-		props: ['h1'],
+		props: ['w'],
         data () {
             return {
                 msg : "shiro"
@@ -21,9 +18,11 @@ div.container
 
 <style lang="scss">
 
-.container {
-	max-width: 1020px;
-    margin: 0 auto;
+.v-col {
+	margin: 0 auto;
+	width:100%;
+	color:green;
+	height:50px;
 	&:after{
 		clear: both;
 		content: "";
@@ -31,5 +30,13 @@ div.container
 	}
 }
 
+@for $i from 0 to 13 {
+	.v-col_col-w_#{$i}
+		{
+		color:red;
+		width: (100%*$i/12); //расчитываем количество процентов
+		float:left;
+		}
 
+}
 </style>

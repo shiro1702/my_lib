@@ -1,9 +1,17 @@
 <template>
 <div id="app">
     <test-one> </test-one>
-    <container h1="привет">
+    <container h1="привет!">
 
         <p>текст 1</p>
+
+		<vCol w="4">
+			тест 1
+		</vCol>
+
+		<vCol w="8">
+			тест 1
+		</vCol>
     </container>
 </div>
 
@@ -13,6 +21,7 @@
 <script>
 import testOne from '../components/test1.vue'
 import container from '../components/container.vue'
+import vCol from '../components/col.vue'
 
 
 export default {
@@ -24,7 +33,8 @@ export default {
   },
   components:{
         testOne,
-      container
+      container,
+	  vCol
     }
 }
 </script>
