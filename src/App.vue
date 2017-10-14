@@ -14,8 +14,23 @@
 		</vCol>
     </container>
 
-	<vGrid o="size gv10">
+	<vGrid o="col24 mg md md ms sm st"> <!-- o="t size gv10"-->
 	тест 2
+		<vBox o ="middle">
+			<vCell o="full">
+				тест 3
+			</vCell>
+			<vCell o ="col1">
+				тест 4
+			</vCell>
+			<vCell o ="col18">
+				<p> тест 5 </p>
+				<p> тест 5 </p>
+			</vCell>
+			<vCell o ="col5">
+				тест 6
+			</vCell>
+		</vBox>
 	</vGrid>
 
 
@@ -28,7 +43,11 @@
 import testOne from '../components/test1.vue'
 import container from '../components/container.vue'
 import vCol from '../components/col.vue'
-import vGrid from '../components/grid.vue'
+
+import vGrid from '../components/vGrid.vue'
+import vBox from '../components/vBox.vue'
+import vCell from '../components/vCell.vue'
+
 
 export default {
   name: 'app',
@@ -41,7 +60,7 @@ export default {
         testOne,
       container,
 	  vCol,
-	  vGrid
+	  vGrid, vBox, vCell
     }
 }
 </script>

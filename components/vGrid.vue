@@ -1,10 +1,13 @@
 <template lang="pug">
-div.grid(v-bind:class = '"grid--" + o.split(" ").join(" grid--") ')
+div.grid(v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("grid--" + o.split(" ").join(" grid--") ): "" ) : ""')
 	//p {{ 'grid--' + o.split(' ').join(' grid--') }}
 	slot
 </template>
 
 <script>
+//import vBox from '../components/vBox.vue'
+//import vCell from '../components/vCell.vue'
+
     export default {
 		props: {
 			o: {
@@ -21,6 +24,8 @@ div.grid(v-bind:class = '"grid--" + o.split(" ").join(" grid--") ')
             }
         },
         components: {
+			//vBox//,
+			//vCell
         }
     }
 </script>
