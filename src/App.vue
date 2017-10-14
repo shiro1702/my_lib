@@ -13,6 +13,12 @@
 			тест 1
 		</vCol>
     </container>
+
+	<vGrid o="size gv10">
+	тест 2
+	</vGrid>
+
+
 </div>
 
 
@@ -22,7 +28,7 @@
 import testOne from '../components/test1.vue'
 import container from '../components/container.vue'
 import vCol from '../components/col.vue'
-
+import vGrid from '../components/grid.vue'
 
 export default {
   name: 'app',
@@ -34,7 +40,8 @@ export default {
   components:{
         testOne,
       container,
-	  vCol
+	  vCol,
+	  vGrid
     }
 }
 </script>
