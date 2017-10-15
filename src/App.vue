@@ -28,7 +28,7 @@
 				<p> тест 5 </p>
 			</vCell>
 			<vCell o ="col5">
-				тест 6
+				<vButton type="link" href="#" o="border-red"> тест 6</vButton>
 			</vCell>
 		</vBox>
 	</vGrid>
@@ -48,6 +48,7 @@ import vGrid from '../components/vGrid.vue'
 import vBox from '../components/vBox.vue'
 import vCell from '../components/vCell.vue'
 
+import vButton from '../components/vButton.vue'
 
 export default {
   name: 'app',
@@ -60,7 +61,9 @@ export default {
         testOne,
       container,
 	  vCol,
-	  vGrid, vBox, vCell
+	  vGrid, vBox, vCell,
+
+	  vButton
     }
 }
 </script>
