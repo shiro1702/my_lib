@@ -6,15 +6,7 @@ div.cell(v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("cell--" +
 
 <script>
     export default {
-		props: {
-			o: {
-				type: Array,
-				default: function () {
-					return { o: 'привет!' }
-					}
-			},
-			//.map(function(i) {return "grid--"+i;});
-		},
+		props: [ 'o' ],
         data () {
             return {
                 msg : "shiro"

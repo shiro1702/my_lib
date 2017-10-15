@@ -8,15 +8,7 @@ div.box(v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("box--" + o
 //import vCell from '../components/cell.vue'
 
     export default {
-		props: {
-			o: {
-				type: Array,
-				default: function () {
-					return { o: 'привет!' }
-					}
-			},
-			//.map(function(i) {return "grid--"+i;});
-		},
+		props: [ 'o' ],
         data () {
             return {
                 msg : "shiro"

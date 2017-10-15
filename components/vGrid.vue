@@ -9,15 +9,7 @@ div.grid(v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("grid--" +
 //import vCell from '../components/vCell.vue'
 
     export default {
-		props: {
-			o: {
-				type: Array,
-				default: function () {
-					return { o: 'привет!' }
-					}
-			},
-			//.map(function(i) {return "grid--"+i;});
-		},
+		props: [ 'o' ],
         data () {
             return {
                 msg : "shiro"
