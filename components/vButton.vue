@@ -1,10 +1,10 @@
 <template lang="pug">
 
-button.button(v-if="type === 'submit'" name='name' v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("btn--" + o.split(" ").join(" btn--") ): "" ) : ""') {{ text }}
+button.button(v-if="type === 'submit'" name='name' v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""') {{ text }}
 	slot
-a.button(v-else-if="type === 'link'"  v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("btn--" + o.split(" ").join(" btn--") ): "" ) : ""') {{ text }}
+a.button(v-else-if="type === 'link'"  v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""') {{ text }}
 	slot
-div.button(v-else-if="(typeof (type))!== 'string' " v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("btn--" + o.split(" ").join(" btn--") ): "" ) : ""') {{ text }}
+div.button(v-else-if="(typeof (type))!== 'string' " v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""') {{ text }}
 	slot
 //template(v-else)
 		//slot
@@ -44,9 +44,9 @@ $basecolors: (
 
 @mixin button-mixin($basecolors) {
     .button {
-
-		border: none;
-
+		border-width:2px;
+		border-style:solid;
+		//border: none;
 		padding: 15px 32px;
 		text-align: center;
 		text-decoration: none;
