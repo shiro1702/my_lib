@@ -1,5 +1,9 @@
 <template>
 <div id="app">
+
+
+	<vTheme>
+	</vTheme>
     <test-one> </test-one>
     <container h1="привет!">
 
@@ -27,8 +31,8 @@
 				<p> тест 5 </p>
 				<p> тест 5 </p>
 			</vCell>
-			<vCell o ="col5">
-				<vButton type="link" href="#" o="border-red"> тест 6</vButton>
+			<vCell o ="col5"  class="theme--red">
+				<vButton type="link" href="#" o=""> тест 6</vButton>
 			</vCell>
 		</vBox>
 	</vGrid>
@@ -50,6 +54,9 @@ import vCell from '../components/vCell.vue'
 
 import vButton from '../components/vButton.vue'
 
+import vTheme from '../components/vTheme.vue'
+
+
 export default {
   name: 'app',
   data () {
@@ -63,7 +70,8 @@ export default {
 	  vCol,
 	  vGrid, vBox, vCell,
 
-	  vButton
+	  vButton,
+	  vTheme
     }
 }
 </script>
