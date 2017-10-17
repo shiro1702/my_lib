@@ -29,53 +29,102 @@ div.button(v-else-if="(typeof (type))!== 'string' " v-bind:class = '((typeof (o)
 </script>
 
 <style lang="scss">
+//вет по умолчанию
 $basecolors: (
-	green: #4CAF50,
-	blue: #008CBA,
-	red: #f44336,
-	orange: #FF5300,
-	yellow: #FFED00,
-	gray: #e7e7e7,
-	black: #555555,
-	white: #fff,
-	purple: #5A009D
+	blue: #007aff,
 );
 
+$base-sizes: (
+	//имя:padding-y, padding-x, font-size
+	s: (8, 16, 12),
+	m: (6, 24, 16),
+	l: (12, 32, 20),
+	xl:(16, 44,26)
+);
 
-@mixin button-mixin($basecolors) {
+@mixin button-mixin($basecolors, $base-sizes) {
     .button {
 		border-width:2px;
 		border-style:solid;
+
 		//border: none;
 		padding: 15px 32px;
+
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
 		color: #000;
+
+
+		padding: 15px 32px;
 		font-size: 16px;
 
-		width: 100%;
 
+		//модификаторы размеров кнокпки
+		@each $name, $option in $base-sizes {
+			&--size-#{$name} {
+				padding: #{ nth($option,1)}px #{ nth($option,2)}px;
+				font-size:#{ nth($option,3)}px;
+				//color:red;
+
+			}
+		}
+
+		//модификатор заркугленных углов
+		&--round {
+			border-radius: 1000px;
+		}
+
+		//модификатор заполнения всего родительского пространства
+		&--fill {
+			width: 100%;
+			height:100%;
+			&-x{//по ширине
+				width: 100%;
+			}
+			&-y{//по высоте
+				height:100%;
+			}
+		}
+
+
+
+		//задаем базовый цвет кнопок
 		@each $name, $code in $basecolors {
-				&--color-#{$name} {
+			border-color: #{$code};
+			border-width:2px;
+			border-style:solid;
+
+			color: #{$code};
+			&:active, &.active-state {
+				background-color: rgba($code, 0.3);
+			}
+			&:hover{
+				background-color: rgba($code, 0.15);
+			}
+			&--active {
+						background-color:  #{$code};
+						border:none;
+						//border-color:rgba(#fff, 1);
+						color:#fff;
+							&:hover{
+								background-color: rgba($code, 0.85);
+							}
+							html:not(.watch-active-state) &:active, &.active-state {
+								background-color: rgba($code, 0.7);
+							}
+        			}
+
+				&.button-fill{
 					background-color: #{$code};
 					color: white;
 				}
-		}
+		}//конец звдвния базовых цветов
 
-		@each $name, $code in $basecolors {
-				&--border-#{$name} {
-					//background-color: #{$code};
-				    //background-color: white;
-					color: #{$code};// black;
-					border: 2px solid #{$code}; /* Green */
-				}
-
-		}
     }
 
 }
 
-@include button-mixin($basecolors);
+@include button-mixin($basecolors, $base-sizes);
 
 </style>
