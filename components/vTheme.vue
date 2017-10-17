@@ -36,26 +36,17 @@ $themecolor : blue;
     .theme {
 
 		@each $name, $code in $basecolors {
-				&--#{$name} .button:not(.button-fill){
-					border-color: #{$code};
-					border-width:2px;
-					border-style:solid;
-
+			&--#{$name} .button{
 					color: #{$code};
 					html:not(.watch-active-state) &:active, &.active-state {
 						background-color: rgba($code, 0.3);
 					}
 					&:hover{
-						//background-color: #{$code};
-						//background-opasity:
 						background-color: rgba($code, 0.15);
-
-						//background-color: transparentize(#{$code}, 0.15);
 					}
 					&.button--active {
 						background-color:  #{$code};
 						border:none;
-						//border-color:rgba(#fff, 1);
 						color:#fff;
 							&:hover{
 								background-color: rgba($code, 0.85);
@@ -65,11 +56,12 @@ $themecolor : blue;
 							}
         			}
 				}
-
-				&--#{$name} .button-fill{
-					background-color: #{$code};
-					color: white;
+			&--#{$name} .button:not(.button--flat){
+					border-color: #{$code};
+					border-width:2px;
+					border-style:solid;
 				}
+
 		}
     }
 
