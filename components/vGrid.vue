@@ -37,7 +37,7 @@ $columns: (24);
 
 $indents: (1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50);
 
-$htmlFontSize: 10;
+$htmlFontSize: 14;
 
 @mixin default($breakpoints, $htmlFontSize) {
 	* {
