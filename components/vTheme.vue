@@ -38,16 +38,31 @@ $themecolor : blue;
 		@each $name, $code in $basecolors {
 				&--#{$name} .button:not(.button-fill){
 					border-color: #{$code};
+					border-width:2px;
+					border-style:solid;
+
 					color: #{$code};
 					html:not(.watch-active-state) &:active, &.active-state {
+						background-color: rgba($code, 0.3);
+					}
+					&:hover{
 						//background-color: #{$code};
 						//background-opasity:
 						background-color: rgba($code, 0.15);
+
 						//background-color: transparentize(#{$code}, 0.15);
 					}
-					&.active {
+					&.button--active {
 						background-color:  #{$code};
+						border:none;
+						//border-color:rgba(#fff, 1);
 						color:#fff;
+							&:hover{
+								background-color: rgba($code, 0.85);
+							}
+							html:not(.watch-active-state) &:active, &.active-state {
+								background-color: rgba($code, 0.7);
+							}
         			}
 				}
 
@@ -55,16 +70,6 @@ $themecolor : blue;
 					background-color: #{$code};
 					color: white;
 				}
-		}
-
-		@each $name, $code in $basecolors {
-				&--border-#{$name} {
-					//background-color: #{$code};
-				    //background-color: white;
-					color: #{$code};// black;
-					border: 2px solid #{$code}; /* Green */
-				}
-
 		}
     }
 
