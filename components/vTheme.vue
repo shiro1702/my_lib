@@ -56,12 +56,17 @@ $themecolor : blue;
 							}
 
         			}
+					&.button--disable{
+						box-shadow:none  !important;
+						background-color: rgba($code, 0.5)  !important;
+					}
+					&:not(.button--flat):not(.button--active){
+						border-color: #{$code};
+						border-width:2px;
+						border-style:solid;
+					}
 				}
-			&--#{$name} .button:not(.button--flat):not(.button--active){
-					border-color: #{$code};
-					border-width:2px;
-					border-style:solid;
-				}
+
 
 		}
     }
