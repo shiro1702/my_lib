@@ -1,10 +1,26 @@
 <template lang="pug">
 
-button.button(v-if="type === 'submit'" name='name' v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""') {{ text }}
+button.button(
+	v-if="type === 'submit'"
+	name='name'
+	v-ripple.mat="!isDisabled"
+    v-on:click="click"
+	v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""'
+) {{ text }}
 	slot
-a.button(v-else-if="type === 'link'"  v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""') {{ text }}
+a.button(
+	v-else-if="type === 'link'"
+	v-ripple.mat="true"
+	v-on:click="click"
+	v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""'
+) {{ text }}
 	slot
-div.button(v-else-if="(typeof (type))!== 'string' " v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""') {{ text }}
+div.button(
+	v-else-if="(typeof (type))!== 'string' "
+	v-ripple.mat="!isDisabled"
+	v-on:click="click"
+	v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""'
+) {{ text }}
 	slot
 //template(v-else)
 		//slot
@@ -14,6 +30,10 @@ div.button(v-else-if="(typeof (type))!== 'string' " v-bind:class = '((typeof (o)
 <script>
 //import vCell from '../components/cell.vue'
 
+//import vButtonMixin from './vButtonMixin'
+
+import Ripple from '../directives/ripple'
+
     export default {
 		props: [ 'o', 'type' ],
         data () {
@@ -21,10 +41,19 @@ div.button(v-else-if="(typeof (type))!== 'string' " v-bind:class = '((typeof (o)
                 msg : "shiro"
             }
         },
+		directives: {
+			Ripple
+		},
         components: {
 			//vBox,
 			//vCell
-        }
+        },
+		methods: {
+			click() {
+
+			}
+
+		}
     }
 </script>
 
@@ -80,8 +109,21 @@ $base-sizes: (
 			border:none;
 		}
 
+		//модификатор с нажимающейся кнопки
+		&--push{
+			//border-bottom:-5px solid rgba(0,0,0,0.4);
+			box-shadow: 0 -3px rgba(0,0,0,0.4) inset, 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+
+			//transform: translate(0, -2px);
+
+			//box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+			&:active{
+			box-shadow: none;
+			}
+		}
+
 		//одификатор тени
-		&--shadow{
+		&--shadow:after{
 			box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
 			&-active:active{
 			box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
@@ -90,6 +132,11 @@ $base-sizes: (
 			box-shadow: 0 6px 8px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
 			}
 
+		}
+
+		//одификатор неактивной кнопки
+		&--disable{
+			//background-opasity: rgba($code, 0.15);
 		}
 
 
@@ -123,7 +170,6 @@ $base-sizes: (
 			&--active {
 						background-color:  #{$code};
 						border:none;
-						//border-color:rgba(#fff, 1);
 						color:#fff;
 							&:hover{
 								background-color: rgba($code, 0.85);
