@@ -54,9 +54,10 @@ $themecolor : blue;
 							html:not(.watch-active-state) &:active, &.active-state {
 								background-color: rgba($code, 0.7);
 							}
+
         			}
 				}
-			&--#{$name} .button:not(.button--flat){
+			&--#{$name} .button:not(.button--flat):not(.button--active){
 					border-color: #{$code};
 					border-width:2px;
 					border-style:solid;
