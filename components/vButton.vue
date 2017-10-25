@@ -134,11 +134,6 @@ $base-sizes: (
 
 		}
 
-		//одификатор неактивной кнопки
-		&--disable{
-			//background-opasity: rgba($code, 0.15);
-		}
-
 
 		//модификатор заполнения всего родительского пространства
 		&--fill {
@@ -183,6 +178,11 @@ $base-sizes: (
 					background-color: #{$code};
 					color: white;
 				}
+					//модификатор неактивной кнопки
+			&--disable{
+				box-shadow:none !important;
+				background-color: rgba($code, 0.15) !important;
+			}
 		}//конец звдвния базовых цветов
 
     }
