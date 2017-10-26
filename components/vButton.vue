@@ -27,12 +27,6 @@ div.button(
 </template>
 
 <script>
-//import vCell from '../components/cell.vue'
-
-//import vButtonMixin from './vButtonMixin'
-
-import Ripple from '../directives/ripple'
-
     export default {
 		props: [ 'o', 'type' ],
         data () {
@@ -40,7 +34,6 @@ import Ripple from '../directives/ripple'
                 msg : "shiro"
             }
         },
-
         components: {
 			//vBox,
 			//vCell
@@ -55,7 +48,7 @@ import Ripple from '../directives/ripple'
 </script>
 
 <style lang="scss">
-//вет по умолчанию
+//цвет по умолчанию
 $basecolors: (
 	blue: #007aff,
 );
@@ -71,8 +64,6 @@ $base-sizes: (
 @mixin button-mixin($basecolors, $base-sizes) {
     .button {
 		position:relative; //для .ripped container
-
-
 		border-width:2px;
 		border-style:solid;
 		//border: none;
@@ -82,11 +73,8 @@ $base-sizes: (
 		text-decoration: none;
 		display: inline-block;
 		color: #000;
-
-
 		padding: 15px 32px;
 		font-size: 16px;
-
 
 		//модификаторы размеров кнокпки
 		@each $name, $option in $base-sizes {
@@ -133,7 +121,6 @@ $base-sizes: (
 
 		}
 
-
 		//модификатор заполнения всего родительского пространства
 		&--fill {
 			width: 100%;
@@ -145,8 +132,6 @@ $base-sizes: (
 				height:100%;
 			}
 		}
-
-
 
 		//задаем базовый цвет кнопок
 		@each $name, $code in $basecolors {
