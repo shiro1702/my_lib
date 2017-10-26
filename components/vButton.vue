@@ -87,8 +87,14 @@ $base-sizes: (
 		}
 
 		//модификатор заркугленных углов
-		&--round {
+		&--round{
 			border-radius: 1000px;
+			&-right{
+				border-radius: 0 1000px 1000px 0;
+			}
+			&-left{
+				border-radius: 1000px 0 0 1000px;
+			}
 		}
 
 		//модификатор с плоским стилем кнопки
