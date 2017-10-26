@@ -45,7 +45,7 @@ $themecolor : blue;
 						background-color: rgba($code, 0.15);
 					}
 					&.button--active {
-						background-color:  #{$code};
+						background-color: #{$code};
 						border:none;
 						color:#fff;
 							&:hover{
