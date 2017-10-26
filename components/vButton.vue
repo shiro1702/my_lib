@@ -3,24 +3,23 @@
 button.button(
 	v-if="type === 'submit'"
 	name='name'
-	v-ripple.mat="!isDisabled"
+
     v-on:click="click"
 	v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""'
-) {{ text }}
+)
 	slot
 a.button(
 	v-else-if="type === 'link'"
-	v-ripple.mat="true"
 	v-on:click="click"
 	v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""'
-) {{ text }}
+)
 	slot
 div.button(
 	v-else-if="(typeof (type))!== 'string' "
-	v-ripple.mat="!isDisabled"
+
 	v-on:click="click"
 	v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("button--" + o.split(" ").join(" button--") ): "" ) : ""'
-) {{ text }}
+)
 	slot
 //template(v-else)
 		//slot
@@ -41,16 +40,14 @@ import Ripple from '../directives/ripple'
                 msg : "shiro"
             }
         },
-		directives: {
-			Ripple
-		},
+
         components: {
 			//vBox,
 			//vCell
         },
 		methods: {
 			click() {
-
+				//console.log("click");
 			}
 
 		}
@@ -73,9 +70,11 @@ $base-sizes: (
 
 @mixin button-mixin($basecolors, $base-sizes) {
     .button {
+		position:relative; //для .ripped container
+
+
 		border-width:2px;
 		border-style:solid;
-
 		//border: none;
 		padding: 15px 32px;
 
