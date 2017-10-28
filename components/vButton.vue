@@ -54,21 +54,27 @@ $basecolors: (
 );
 
 $base-sizes: (
-	//имя:padding-y, padding-x, font-size
-	s: (8, 16, 12),
-	m: (6, 24, 16),
-	l: (12, 32, 20),
-	xl:(16, 44,26)
+	//имя:padding-y, padding-x, height, width,  font-size
+	s: (4px, 16px, auto, auto, 12px),
+	m: (6px, 24px, auto, auto, 16px),
+	l: (12px, 32px, auto, auto, 20px),
+	xl: (16px, 44px, auto, auto,26px),
+	s-icon: (5px, 5px, 22px, 22px, 12px),
+	m-icon: (10px, 10px, 50px, 50px, 24px),
+	l-icon: (22px, 22px, 74px, 74px, 30px),
+	xl-icon: (25px, 25px, 100px, 100px,50px),
 );
 
-@mixin button-mixin($basecolors, $base-sizes) {
+$border:2px;
+
+@mixin button-mixin($basecolors, $base-sizes, $border) {
     .button {
 		position:relative; //для .ripped container
-		border-width:2px;
-		border-style:solid;
+
 		//border: none;
 		padding: 15px 32px;
 
+		vertical-align: middle;
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
@@ -79,10 +85,10 @@ $base-sizes: (
 		//модификаторы размеров кнокпки
 		@each $name, $option in $base-sizes {
 			&--size-#{$name} {
-				padding: #{ nth($option,1)}px #{ nth($option,2)}px;
-				font-size:#{ nth($option,3)}px;
-				//color:red;
-
+				padding: #{ nth($option,1)} #{ nth($option,2)};
+				height: #{ nth($option,3)};
+				width: #{ nth($option,4)};
+				font-size:#{ nth($option,5)};
 			}
 		}
 
@@ -104,21 +110,47 @@ $base-sizes: (
 
 		//модификатор с нажимающейся кнопки
 		&--push{
-			//border-bottom:-5px solid rgba(0,0,0,0.4);
-			box-shadow: 0 -3px rgba(0,0,0,0.4) inset, 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+			//transform: translate(0, - (#{$border+3px}) );
+			&:not(.button--active){
+				border-bottom-width: #{$border+3px};
+			}
+			&:active:not(.button--active){
+				border-bottom-width: #{$border};
+				transform: translate(0, (#{$border+3px}));
+				box-shadow: none;
+			}
 
-			//transform: translate(0, -2px);
-
-			//box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+			&::before{
+				content:"";
+				position: absolute;
+				top: 5px;
+				left: 0;
+				background-color: inherit;
+				width:100%;
+				height: 100%;
+				border-radius: inherit;
+				//opacity: 0.5;
+				box-shadow:  0 -5px rgba(0,0,0,0.3) inset;
+				z-index: -1;
+			}
 			&:active{
-			box-shadow: none;
+				transform: translate(0, 0);
+				transform: translate(0, (#{$border+3px}) );
+				box-shadow: none;
+			}
+			&:active::before{
+				box-shadow: none;
+				top: 0px;
 			}
 		}
 
 		//одификатор тени
 		&--shadow{
 			box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
-			&-active:active{
+			&::before{
+				box-shadow: 0 -5px rgba(0,0,0,0.3) inset, 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+			}
+			&-active:active{// не работает!!!
 			box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
 			}
 			&-hover:hover{
@@ -141,37 +173,43 @@ $base-sizes: (
 
 		//задаем базовый цвет кнопок
 		@each $name, $code in $basecolors {
-			border-color: #{$code};
-			border-width:2px;
-			border-style:solid;
+			//&:not(&--active){
+				border-color: #{$code};
+				border-top-width:#{$border};
+				border-left-width:#{$border};
+				border-right-width:#{$border};
+				border-bottom-width:#{$border};
 
+				border-style:solid;
+			//}
 			color: #{$code};
-			&:active, &.active-state {
-				background-color: rgba($code, 0.3);
-			}
-			&:hover{
-				background-color: rgba($code, 0.15);
-			}
+					&:active, &.active-state {
+						background-color: lighten($code,50%);// rgba($code, 0.3);
+					}
+					&:hover{
+						background-color:lighten($code,40%);// rgba($code, 0.15);
+					}
 			&--active {
-						background-color:  #{$code};
-						border:none;
-						color:#fff;
-							&:hover{
-								background-color: rgba($code, 0.85);
-							}
-							html:not(.watch-active-state) &:active, &.active-state {
-								background-color: rgba($code, 0.7);
-							}
-        			}
+				border:none;
+				background-color:  #{$code};
+				//border:none;
+				color:#fff;
+					&:hover{
+						background-color:  lighten($code,10%); //rgba($code, 0.85);
+					}
+					html:not(.watch-active-state) &:active, &.active-state {
+						background-color: lighten($code,20%); //rgba($code, 0.7);
+					}
+       		}
 
-				&.button-fill{
-					background-color: #{$code};
-					color: white;
+			&.button-fill{
+				background-color: #{$code};
+				color: white;
 				}
 					//модификатор неактивной кнопки
 			&--disable{
 				box-shadow:none !important;
-				background-color: rgba($code, 0.15) !important;
+				background-color: lighten($code,20%) !important;//rgba($code, 0.15)
 			}
 		}//конец звдвния базовых цветов
 
@@ -179,6 +217,6 @@ $base-sizes: (
 
 }
 
-@include button-mixin($basecolors, $base-sizes);
+@include button-mixin($basecolors, $base-sizes, $border);
 
 </style>

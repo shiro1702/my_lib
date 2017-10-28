@@ -39,30 +39,30 @@ $themecolor : blue;
 			&--#{$name} .button{
 					color: #{$code};
 					html:not(.watch-active-state) &:active, &.active-state {
-						background-color: rgba($code, 0.3);
+						background-color:  lighten($code,70%); //rgba($code, 0.3);
 					}
 					&:hover{
-						background-color: rgba($code, 0.15);
+						background-color: lighten($code,85%); //rgba($code, 0.15);
 					}
 					&.button--active {
 						background-color: #{$code};
 						border:none;
 						color:#fff;
 							&:hover{
-								background-color: rgba($code, 0.85);
+								background-color:  lighten($code,10%); //rgba($code, 0.85);
 							}
 							html:not(.watch-active-state) &:active, &.active-state {
-								background-color: rgba($code, 0.7);
+								background-color: lighten($code,20%); //rgba($code, 0.7);
 							}
 
         			}
 					&.button--disable{
 						box-shadow:none  !important;
-						background-color: rgba($code, 0.5)  !important;
+						background-color:lighten($code,20%) !important; //; rgba($code, 0.5)
 					}
 					&:not(.button--flat):not(.button--active){
 						border-color: #{$code};
-						border-width:2px;
+						//border-width:2px;
 						border-style:solid;
 					}
 				}
