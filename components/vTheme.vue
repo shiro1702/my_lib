@@ -30,7 +30,7 @@ $basecolors: (
 	purple: #5A009D
 );
 
-$themecolor : blue;
+$themecolor : #007aff;
 
 @mixin theme-mixin($basecolors) {
     .theme {
@@ -66,6 +66,12 @@ $themecolor : blue;
 						border-style:solid;
 					}
 				}
+			&--#{$name} .chart{
+				&_progress{
+					stroke:#{$code};
+				}
+
+			}
 
 
 		}
