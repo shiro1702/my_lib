@@ -1,7 +1,7 @@
 <template lang="pug">
-div.chart
+div.chart(v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("chart__" + o.split(" ").join(" chart__") ): "" ) : ""')
 	svg.chart_svg(v-bind:height='h' v-bind:width='w')
-		circle.skill-progress__svg-bg(v-bind:cx='h/2' v-bind:cy='w/2' v-bind:r='h / 2 - strokeWidth' stroke="#e5e5e5" v-bind:stroke-width='strokeWidth' fill="none" )
+		circle.chart_progress-bg(v-bind:cx='h/2' v-bind:cy='w/2' v-bind:r='h / 2 - strokeWidth' stroke="#e5e5e5" v-bind:stroke-width='strokeWidth' fill="none" )
 		circle.chart_progress(v-bind:cx='h/2' v-bind:cy='w/2' v-bind:r='h / 2 - strokeWidth' v-bind:stroke-width='strokeWidth' fill="none" v-bind:stroke-dashoffset='((100-p)*(h/2-strokeWidth)*2*3.14159 )/100' v-bind:stroke-dasharray='(h/2-strokeWidth)*2*3.14159')
 	div.chart_slot
 		//p {{p}}%
@@ -57,6 +57,9 @@ div.chart
 		}
 	&_progress{
 			stroke: #007aff;
+		}
+	&__nobg &_progress-bg{
+		stroke: none;
 		}
 }
 </style>
