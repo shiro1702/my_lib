@@ -58,8 +58,11 @@ div.chart(v-bind:class = '((typeof (o)) === "string" ) ? ( (o!=="") ? ("chart__"
 	&_progress{
 			stroke: #007aff;
 		}
-	&__nobg &_progress-bg{
+	&__no-bg-stroke &_progress-bg{
 		stroke: none;
+		}
+	&__bg &_progress-bg{
+		fill: #e5e5e5;
 		}
 }
 </style>
