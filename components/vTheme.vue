@@ -66,7 +66,7 @@ $themecolor : #007aff;
 						border-style:solid;
 					}
 				}
-			&--#{$name} .chart{
+			&--#{$name} .percentage{
 				&_progress{
 					stroke:#{$code};
 				}
