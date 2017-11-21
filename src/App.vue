@@ -24,15 +24,21 @@
 			<vCell o="full">
 				тест 3
 			</vCell>
-			<vCell o ="col1">
+			<vCell o ="col5" class="theme--red">
 				тест 4
+				<vChart h="100" w="100" strokeWidth="10" v-bind:chartData='chartData' >
+				</vChart>
 			</vCell>
-			<vCell o ="col18">
-				<p> тест 5 </p>
-				<p> тест 5 </p>
+			<vCell o ="col5">
+				<vButton type="link" href="#" o="size-m fill-x round push shadow"> тест 6</vButton>
 			</vCell>
-			<vCell o ="col5"  class="theme--red">
-				<vButton type="link" href="#" o=""> тест 6</vButton>
+			<vCell o ="col5" >
+				<vButton v-ripple.mat="true" type="link" href="#" o="size-m fill-x active shadow push">
+					тест 6
+				</vButton>
+			</vCell>
+			<vCell o ="col5"  class="theme--orange">
+				<vButton v-ripple.mat="true" type="link" href="#" o="disable size-m fill-x active round shadow push"> тест 6</vButton>
 			</vCell>
 		</vBox>
 	</vGrid>
@@ -54,29 +60,55 @@ import vCell from '../components/vCell.vue'
 
 import vButton from '../components/vButton.vue'
 
+import vChart from '../components/vChart.vue'
+import vPercentage from '../components/vPercentage.vue'
+
 import vTheme from '../components/vTheme.vue'
+
+import Ripple from '../directives/ripple'
 
 
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Добро пожаловать в Your Vue.js App'
+      msg: 'Добро пожаловать в Your Vue.js App',
+		chartData:[{
+				color: "red",
+				pVal:33.33,
+				text: 'данные отсутсвуют.'
+			},
+			{
+				color: "green",
+				pVal:33.33,
+				text: 'данные отсутсвуют.'
+			},
+			{
+				color: "blue",
+				pVal:33.33,
+				text: 'данные отсутсвуют.'
+			}
+				  ]
     }
   },
+	directives: {
+			Ripple
+		},
   components:{
         testOne,
       container,
 	  vCol,
 	  vGrid, vBox, vCell,
 
-	  vButton,
+	  vButton, vChart,
 	  vTheme
     }
 }
 </script>
 
 <style lang="scss">
+@import "directives/ripple";
+
 * {
     box-shadow:0 0 1px blue;
 }
